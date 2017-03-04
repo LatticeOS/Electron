@@ -59,6 +59,7 @@ RUN buildDeps=' \
 	&& rm -rf /opt/electron/install.zip \
 	&& ln -s /opt/electron/electron /bin/electron \
 	&& cd $HOME \
+	&& rm -rf .git \
 	&& git clone https://github.com/electron/electron-quick-start.git . --depth 1 \
 	&& apt-get purge -y --auto-remove $buildDeps
 
