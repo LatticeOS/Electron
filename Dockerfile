@@ -63,5 +63,5 @@ RUN buildDeps=' \
 	&& apt-get purge -y --auto-remove $buildDeps
 
 WORKDIR $HOME
-ENTRYPOINT [ "/bin/electron ~/app" ]
+#ENTRYPOINT [ "/bin/electron ~/app" ]
 
