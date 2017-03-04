@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y \
 	--no-install-recommends
 
 ENV HOME /home/user
-RUN rm -rf $HOME && useradd --create-home --home-dir $HOME user \
+RUN useradd --create-home --home-dir $HOME user \
 	&& chown -R user:user $HOME
 
 ENV ELECTRON_VERSION 1.6.5
@@ -58,10 +58,10 @@ RUN buildDeps=' \
 	&& unzip /opt/electron/install.zip \
 	&& rm -rf /opt/electron/install.zip \
 	&& ln -s /opt/electron/electron /bin/electron \
-	&& cd $HOME && ls -asl \
-	&& git clone https://github.com/electron/electron-quick-start.git . --depth 1 \
+	&& cd $HOME \
+	&& git clone https://github.com/electron/electron-quick-start.git app --depth 1 \
 	&& apt-get purge -y --auto-remove $buildDeps
 
 WORKDIR $HOME
-ENTRYPOINT [ "/bin/electron ~" ]
+ENTRYPOINT [ "/bin/electron ~/app" ]
 
