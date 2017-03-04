@@ -55,7 +55,7 @@ RUN buildDeps=' \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p /opt/electron \
 	&& curl -sSL "https://github.com/electron/electron/releases/download/v${ELECTRON_VERSION}/electron-v${ELECTRON_VERSION}-linux-x64.zip" -o /opt/electron/install.zip \
-	&& unzip /opt/electron/install.zip \
+	&& unzip /opt/electron/install.zip -d /opt/electron \
 	&& rm -rf /opt/electron/install.zip \
 	&& ln -s /opt/electron/electron /bin/electron \
 	&& cd $HOME \
