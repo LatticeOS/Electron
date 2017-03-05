@@ -1,5 +1,5 @@
 FROM debian:stretch
-LABEL maintainer "Jessie Frazelle <jess@linux.com>"
+LABEL maintainer "Gitai <i@gitai.me>"
 
 RUN apt-get update && apt-get install -y \
 	libasound2 \
