@@ -57,11 +57,8 @@ RUN buildDeps=' \
 	&& curl -sSL "https://github.com/electron/electron/releases/download/v${ELECTRON_VERSION}/electron-v${ELECTRON_VERSION}-linux-x64.zip" -o /opt/electron/install.zip \
 	&& unzip /opt/electron/install.zip -d /opt/electron \
 	&& rm -rf /opt/electron/install.zip \
-	&& ln -s /opt/electron/electron /bin/electron \
-	&& cd $HOME \
-	&& git clone https://github.com/electron/electron-quick-start.git app --depth 1 \
 	&& apt-get purge -y --auto-remove $buildDeps
 
 WORKDIR $HOME
-#ENTRYPOINT [ "/bin/electron ~/app" ]
+ENTRYPOINT [ "/opt/electron/electron" ]
 
