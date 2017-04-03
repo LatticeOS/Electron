@@ -24,3 +24,16 @@ docker run -d --rm\
     --name electron-demo \
     gitai/electron
 ```
+
+```shell
+#!/bin/sh
+
+echo Run $(basename $0) $* ...
+
+curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" -d '{"Image": "gitai/electron", 
+"Cmd": "'$*'", "Env": ["DISPLAY=:0"], "HostConfig" : {"VolumesFrom": ["desktop"], "AutoRemove": true}}' -X POST http:/v1.24/containers/create?name=electron
+
+curl --unix-socket /var/run/docker.sock -H "Content-Type: application/json" -X POST http:/v1.24/containers/electron/start
+
+echo Success!
+```

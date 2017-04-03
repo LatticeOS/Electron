@@ -59,6 +59,7 @@ RUN buildDeps=' \
 	&& rm -rf /opt/electron/install.zip \
 	&& apt-get purge -y --auto-remove $buildDeps
 
+COPY electron /opt/lattice/bin/electron
+
 WORKDIR $HOME
 ENTRYPOINT [ "/opt/electron/electron" ]
-
